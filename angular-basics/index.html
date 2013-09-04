@@ -43,7 +43,7 @@
 					</p>
 				</section>
 				<section>
-					<p>A couple of things I learned building <a href="https://github.com/roblarsen/-100k-club">https://github.com/roblarsen/-100k-club</a>, a dynamic reworking of the <a href="http://itsalljustcomics.com/100000-club/">$100,000 Club</a>, a list of the world's most valuable comic books.</p>
+					<p>A couple of things I learned building <a href="https://github.com/roblarsen/-100k-club">https://github.com/roblarsen/-100k-club</a>, a <a href="http://roblarsen.github.io/-100k-club/">dynamic reworking</a> of the <a href="http://itsalljustcomics.com/100000-club/">$100,000 Club</a>, a list of the world's most valuable comic books.</p>
 				</section>
 				<section>
 					<section>
@@ -67,50 +67,55 @@
 									<li><code>data-ng-model</code> defines the model for the <code>input</code></li>
 									<li>The <code>list</code> attribute references the <code>datalist</code> element that the <code>input</code> should look for in order to build value hints. The value of the attribute is the <code>id</code> of the <code>datalist</code> you want to use.</li>
 								</ul>
-							</li> 
-							<li>The <code>button</code> uses <code>data-ng-click</code> in order to bind the <code>addItem</code> function to click events on the form.</li>
+							</li>
+						</ul>
+						</section>	 
+						<section>
+						<h2>The Markup</h2>
+						<ul><li>The <code>button</code> uses <code>data-ng-click</code> in order to bind the <code>addItem</code> function to click events on the form.</li>
 							<li>Finally, there’s the <code>datalist</code> element which uses <code>data-ng-repeat</code> to build out the list of autocomplete options. This directive is bound to the <code>titles</code> property of the controller scope. Since Angular models are bidirectional, once you update <code>$scope.titles</code> this list will be updated with new values. Pretty sweet.</li>
 						</ul>
 					</section>
 					<section>
 						<pre><code>
-&lt;body data-ng-controller="MainCtrl">
-  <form>
-    <div>
-      <label>title</label>
-      <input type="text" 
-             data-ng-model="item.title" 
-     		 list="comicstitle">
-    </div>
-    <div>
-      <input type="Button" 
-             value="Add" 
-    		 data-ng-click="addItem(item)">
-    </div>
-  </form>
-  <datalist id="comicstitle">
-    <option  data-ng-repeat="ttl in titles" 
-             value="{{ttl}}">
-  </datalist>
-&lt;/body>
+&lt;body data-ng-controller="MainCtrl"&gt;
+  &lt;form&gt;
+    &lt;div&gt;
+      &lt;label&gt;title&lt;/label&gt;
+      &lt;input type="text" 
+             data-ng-model="item.title" list="comicstitle"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;input type="Button" 
+             value="Add" data-ng-click="addItem(item)"&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+  &lt;datalist id="comicstitle"&gt;
+    &lt;option  data-ng-repeat="ttl in titles" value="{{ttl}}"&gt;
+  &lt;/datalist&gt;
+&lt;/body&gt;
 						</code></pre>
 					</section>
 					<section>
 						<h2>The JavaScript</h2>
-<ul><li>For starters there's a starter list of titles as a variable on the controller’s scope. It’s a simple array bound to <code>$scope.titles</code>.
-<small>Have I mentioned that data binding is one of my favorite things about Angular? There’s absolutely no ceremony with creating a model. It’s just a variable on the controller’s scope (or even the global scope if you’re super lazy.)</small></li>
-<li>The only other thing on the controller is a function called <code>addItem.</code> This function is the method referenced in the <code>data-ng-click</code> attribute in the markup. It does a couple of things. 
-	<ul>
-		<li>The first is that is pushes the new value to <code>$scope.titles.</code></li>
-		<li>The next bit is another neat illustration of Angular models. Setting <code>$scope.item</code> the object bound with <code>ng-model</code> to the <code>input</code> to an empty object is a shortcut to clearing the values out of the form. Two way data binding. </li>
-	</ul>
-</li>
-</ul>
+							<ul><li>For starters there's a starter list of titles as a variable on the controller’s scope. It’s a simple array bound to <code>$scope.titles</code>.
+							<small>Have I mentioned that data binding is one of my favorite things about Angular? There’s absolutely no ceremony with creating a model. It’s just a variable on the controller’s scope (or even the global scope if you’re super lazy.)</small></li>
 
+						</ul>
+					</section>
+						<section>
+						<h2>The JavaScript</h2>
+						<ul>	
+							<li>The only other thing on the controller is a function called <code>addItem.</code> This function is the method referenced in the <code>data-ng-click</code> attribute in the markup. It does a couple of things. 
+								<ul>
+									<li>The first is that is pushes the new value to <code>$scope.titles.</code></li>
+									<li>The next bit is another neat illustration of Angular models. Setting <code>$scope.item</code> the object bound with <code>ng-model</code> to the <code>input</code> to an empty object is a shortcut to clearing the values out of the form. Two way data binding. </li>
+								</ul>
+							</li>
+							</ul>
 					</section>
 					<section>
-						<pre><codE>
-
+						<pre><code>
 app.controller( 'MainCtrl' , function( $scope ) {
   $scope.titles = [ "Action Comics" , "Detective Comics" , "Superman" , "Fantastic Four" , "Amazing Spider-Man" ];
   $scope.addItem = function( item ) {
@@ -120,22 +125,101 @@ app.controller( 'MainCtrl' , function( $scope ) {
     $scope.item = {};
   }
 });
-						</codE></pre>
+						</code></pre>
 				</section>
 				<section>
 					<h2>In Action</h2>
 <iframe src="http://embed.plnkr.co/TJ2tbvuaw5KFEfLtZdNt/preview" width="100%" height="50%"></iframe>
+				</section>
 			</section>
-
+			<section>
 				<section>
 					<h2>Sorting by Multiple Fields with Different Sort Orders Using the AngularJS orderby Filter</h2>
 
 				</section>
+				<section>
+				<p>One of the things I need to do with the $100k list is sort the displayed data by three different fields <strong>and</strong> with two different sorts. This is very easy to do in Angular, you just might not know it since the documentation for <code>orderBy</code> is crummy. The one example that’s there is more confusing than it needs to be and only shows one variation.</p>
+				<p>Let's make it happen</p>
+				</section>
+				<section>
+					<h2>ng-repeat</h2>
+					<p>This basic example also uses the <code>ng-repeat</code> directive. <code>ng-repeat</code> makes it trivial to loop through a collection and apply an HTML template to every member of the collection. In this example <code>items</code> is a collection of JavaScript objects stored in an array on the controller’s scope.</p>
+				</section>
+				<section>
+					<h2>items</h2>
+					<pre><code>
+app.controller('MainCtrl', function($scope) {
+  $scope.items = [{
+    "title":"Action Comics",
+    "issue":"1",
+    "publisher":"DC Comics",
+    "cover_date":"1938-06-01",
+    "pedigree":"Church",
+    "grade_src":"Anecdote",
+    "grade":"9.2",
+    "general_commentary":"Best Existing",
+    "uid":0}]
+    /*and on and on*/
+});
+</pre></code>
+				</section>
+				<section>
+					<h2>Interpolation FTW</h2>
+<pre><code>
+&lt;tr data-ng-repeat="it in items"&gt;
+  &lt;td>{{it.title}}&lt;/td&gt;
+  &lt;td>{{it.issue}}&lt;/td&gt;
+  &lt;td>{{it.pedigree}}{{it.collection}}{{it.provenance}}&lt;/td&gt;
+  &lt;td>{{it.grade_src}}&lt;/td&gt;
+  &lt;td>{{it.grade}}&lt;/td&gt;
+  &lt;td>{{it.general_commentary}}&lt;/td&gt;
+&lt;/tr>
+</code></pre>
 
-
-			</div>
-
+				</section>
+				<section>
+					<img src="out-of-order-300x251.png">
+				</section>	
+				<section>
+					<h2>orderBy</h2>
+					<p>While the previous example works fine, the rows are simply presented in the order of the members of the array. That might be okay for you if you’re getting a presorted collection, but if you want to change the order, you have the power to adjust it using Angular’s <code>orderBy</code> filter.</p>
+				</section>
+				<section>
+					<h2>orderBy</h2>
+					<p>In this example we want to sort by the title of the comic (ascending, from A to Z), then by the issue number (ascending, from 1-∞) and finally by the grade (descending, from 10.0 to 0.5.) While this is dead easy to do using Angular, it’s not clearly documented.</p>
+				</section>
+				<section>
+					<h2>How?</h2>
+					<p>Inside the <code>ng-repeat</code> you invoke the <code>orderBy</code> filter on your data. This is done with the pipe “<code>|</code>” character. Everything on the left of the pipe is passed to the filter referenced on the right of the pipe. Commonly, <code>orderBy</code> is shown accepting a single variable (technically an Angular expression) representing one of the available properties of the members of the collection. What’s not clear from the documentation or common examples is that is that it can also accept an array of properties with which to order the collection.</p> 
+					</section>
+					<section>
+					<h2>how?</h2>	
+					<p>So passing <code>['title','issue','-grade']</code> to <code>orderBy</code> tells Angular to sort first by the <code>title</code>, then by the <code>issue</code> and finally by the <code>grade</code> properties of the <code>it</code> object. </p>
+					<p>Notice something interesting about the way grade is passed into orderBy? Yes, it’s that simple to reverse the sort in this syntax- simply negate the variable with “-” and the sort on that property will be reversed. Pretty sweet.</p>
+				</section>
+				<section>
+				<pre><code>
+&lt;tr data-ng-repeat="it in items | orderBy:['title','issue','-grade']"&gt;
+  &lt;td>{{it.title}}&lt;/td&gt;
+  &lt;td>{{it.issue}}&lt;/td&gt;
+  &lt;td>{{it.pedigree}}{{it.collection}}{{it.provenance}}&lt;/td&gt;
+  &lt;td>{{it.grade_src}}&lt;/td&gt;
+  &lt;td>{{it.grade}}&lt;/td&gt;
+  &lt;td>{{it.general_commentary}}&lt;/td&gt;
+&lt;/tr&gt;
+				</code></pre>
+				</section>
+				<section>
+					<h2>In Action</h2>
+					<iframe src="http://embed.plnkr.co/M1mMPZJPapQGjuQ4CdUR/preview" width="100%" height="400px;"></iframe>
+				</section>
+			</section>
+<section>
+	<h2>THANKS</h2>
+</section>
 		</div>
+
+	</div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
