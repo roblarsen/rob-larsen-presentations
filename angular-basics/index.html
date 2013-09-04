@@ -42,22 +42,93 @@
 						<small><a href="http://htmlcssjavascript.com">Rob Larsen</a> | <a href="http://twitter.com/robreact">@robreact</a> | <a href="http://twitter.com/roblarsenwww">@roblarsenwww</a> | <a href="https://github.com/roblarsen">roblarsen on Github</a> | <a href="http://www.amazon.com/Rob-Larsen/e/B007EC5FL6/ref=ntt_athr_dp_pel_1">Amazon</a></small>
 					</p>
 				</section>
-
 				<section>
-					<section><h2>Sorting by Multiple Fields with Different Sort Orders Using the AngularJS orderby Filter</h2>
-					<p>This example leverages two basic features of Angular and two HTML5 features to create an easy, live autocomplete widget.</p>
+					<p>A couple of things I learned building <a href="https://github.com/roblarsen/-100k-club">https://github.com/roblarsen/-100k-club</a>, a dynamic reworking of the <a href="http://itsalljustcomics.com/100000-club/">$100,000 Club</a>, a list of the world's most valuable comic books.</p>
+				</section>
+				<section>
+					<section>
+						<h2>Easy Autocomplete with the datalist Element, the list Attribute and AngularJS’s ng-repeat Directive</h2>
+						<p>This example leverages two basic features of Angular and two HTML5 features to create an easy, live autocomplete widget.</p>
 					</section>
 					<section>
 						<p>The pieces we’re going to use are:</p>
-
-<ul><li><strong>Angular models</strong> This demo shows how easy it is to use Angular’s models.</li>
-<li><strong>ng-repeat</strong> Used here to iterate over a collection and create a dynamic datalist element.</li>
-<li><strong>datalist and list</strong> The datalist element and the list attribute are the two new HTML features that bind up the autocomplete functionality. datalist defines a list of autocomplete entries. The list attribute binds the datalist to an input using an id reference. This combination is available in Chrome, Opera and Firefox with buggy support in IE10+</li></ul>
+						<ul>
+							<li><strong>Angular models</strong> This demo shows how easy it is to use Angular’s models.</li>
+							<li><strong>ng-repeat</strong> Used here to iterate over a collection and create a dynamic datalist element.</li>
+							<li><strong>datalist and list</strong> The datalist element and the list attribute are the two new HTML features that bind up the autocomplete functionality. datalist defines a list of autocomplete entries. The list attribute binds the datalist to an input using an id reference. This combination is available in Chrome, Opera and Firefox with buggy support in IE10+</li>
+						</ul>
 					</section>
+					<section>
+						<h2>The Markup</h2>
+						<ul>
+							<li>First you define an Angular controller named <code>MainCtrl</code>.</li>
+							<li>The <code>input</code> itself has two pieces to note, the <code>data-ng-model</code> attribute and the <code>list</code> attribute.
+								<ul>
+									<li><code>data-ng-model</code> defines the model for the <code>input</code></li>
+									<li>The <code>list</code> attribute references the <code>datalist</code> element that the <code>input</code> should look for in order to build value hints. The value of the attribute is the <code>id</code> of the <code>datalist</code> you want to use.</li>
+								</ul>
+							</li> 
+							<li>The <code>button</code> uses <code>data-ng-click</code> in order to bind the <code>addItem</code> function to click events on the form.</li>
+							<li>Finally, there’s the <code>datalist</code> element which uses <code>data-ng-repeat</code> to build out the list of autocomplete options. This directive is bound to the <code>titles</code> property of the controller scope. Since Angular models are bidirectional, once you update <code>$scope.titles</code> this list will be updated with new values. Pretty sweet.</li>
+						</ul>
+					</section>
+					<section>
+						<pre><code>
+&lt;body data-ng-controller="MainCtrl">
+  <form>
+    <div>
+      <label>title</label>
+      <input type="text" 
+             data-ng-model="item.title" 
+     		 list="comicstitle">
+    </div>
+    <div>
+      <input type="Button" 
+             value="Add" 
+    		 data-ng-click="addItem(item)">
+    </div>
+  </form>
+  <datalist id="comicstitle">
+    <option  data-ng-repeat="ttl in titles" 
+             value="{{ttl}}">
+  </datalist>
+&lt;/body>
+						</code></pre>
+					</section>
+					<section>
+						<h2>The JavaScript</h2>
+<ul><li>For starters there's a starter list of titles as a variable on the controller’s scope. It’s a simple array bound to <code>$scope.titles</code>.
+<small>Have I mentioned that data binding is one of my favorite things about Angular? There’s absolutely no ceremony with creating a model. It’s just a variable on the controller’s scope (or even the global scope if you’re super lazy.)</small></li>
+<li>The only other thing on the controller is a function called <code>addItem.</code> This function is the method referenced in the <code>data-ng-click</code> attribute in the markup. It does a couple of things. 
+	<ul>
+		<li>The first is that is pushes the new value to <code>$scope.titles.</code></li>
+		<li>The next bit is another neat illustration of Angular models. Setting <code>$scope.item</code> the object bound with <code>ng-model</code> to the <code>input</code> to an empty object is a shortcut to clearing the values out of the form. Two way data binding. </li>
+	</ul>
+</li>
+</ul>
+
+					</section>
+					<section>
+						<pre><codE>
+
+app.controller( 'MainCtrl' , function( $scope ) {
+  $scope.titles = [ "Action Comics" , "Detective Comics" , "Superman" , "Fantastic Four" , "Amazing Spider-Man" ];
+  $scope.addItem = function( item ) {
+    if ( !_.contains( $scope.titles , item.title ) ){
+      $scope.titles.push( item.title );
+    }
+    $scope.item = {};
+  }
+});
+						</codE></pre>
 				</section>
+				<section>
+					<h2>In Action</h2>
+<iframe src="http://embed.plnkr.co/TJ2tbvuaw5KFEfLtZdNt/preview" width="100%" height="50%"></iframe>
+			</section>
 
 				<section>
-					<h2>Easy Autocomplete with the datalist Element, the list Attribute and AngularJS’s ng-repeat Directive</h2>
+					<h2>Sorting by Multiple Fields with Different Sort Orders Using the AngularJS orderby Filter</h2>
 
 				</section>
 
