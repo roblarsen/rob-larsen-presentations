@@ -1,7 +1,7 @@
 /**
  * A theme for reveal.js presentations. Customized by Rob Larsen
  * 
- * Forked from the simple heme Copyright (C) 2012 Owen Versteeg, https://github.com/StereotypicalApps. It is MIT licensed.
+ * Forked from the simple Theme Copyright (C) 2012 Owen Versteeg, https://github.com/StereotypicalApps. It is MIT licensed.
  * reveal.js is Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
 /*********************************************
@@ -207,4 +207,8 @@ body {
 
 .reveal dt{
   font-size:1.5em;
+}
+
+.reveal code {
+  font-family:Consola,Inconsolata, "Courier New", Courier, monospace
 }
