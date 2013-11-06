@@ -43,7 +43,7 @@
 					<h1>An Introduction to <code>&lt;canvas&gt;</code></h1>
 					<h2>Rob Larsen</h2>
 					<h2>2013.11.6</h2>
-          <small><a href="https://github.com/roblarsen/rob-larsen-presentations">Download</a> (https://github.com/roblarsen/rob-larsen-presentations)</small>
+          <small><a href="http://roblarsen.github.io/rob-larsen-presentations/canvas/slides/index.html">Download</a> (http://roblarsen.github.io/rob-larsen-presentations/canvas/slides/index.html) | <a href="../An-introduction-to-Canvas.pdf">PDF</a></small>
 				</section>
 				<section>
 					<h1>What we're going to talk about</h1>
@@ -78,9 +78,10 @@
 						  <li>I'm <a ref="https://github.com/roblarsen">roblarsen</a> on Github</li>
 					    <li>I'm <a href="https://twitter.com/roblarsenwww">@roblarsenwww</a> (web stuff) <a href="https://twitter.com/robreact">@robreact</a> (everything else) on Twitter</li>
               <li>I have a blog @ <a href="http://HTMLCSSJavaScript.com">htmlcssjavascript.com</a></li>
-					    <li>I wrote this book. I'm working on another one. </li>
+					    <li>I wrote this book. I'm working on another one. <small>Best question today gets a fee copy of my book!</small></li>
 					  </ul>
    <a href="http://www.amazon.com/gp/product/1118340183/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=1118340183&linkCode=as2&tag=drunkenfistcom"><img src="img/beginning-html-and-css.jpg" alt="an image of Rob Larsen's Beginning HTML and CSS" width="178" height="225" /></a>
+   
                       
 					</section>
           <section>
@@ -104,11 +105,11 @@
          </section>
           <section>
             <h1>Control</h1>
-            <p>It's an extremely low level API. This means you often have to do a bit of work but you have complete, pixel level control.</p>
+            <p>It's an extremely low level API. This means you often have to do a bit of work but you have complete, pixel level control over the image.</p>
           </section>
           <section>
             <h1>That's Both Good and Bad</h1>
-            <p>Sometimes you have to do things that are just silly. </p>
+            <p>Full control and a low level API sometimes you have to do things that are just silly. </p>
           </section>
           <section>
             <h1>In Action</h1>  
@@ -116,10 +117,14 @@
           </section>
           <section>
             <h1>In Action</h1>  
-            <p>The JavaScript is just series of commands that will manipulate the canvas in different ways. </p>
+            <p>The JavaScript is just series of commands that will manipulate the canvas in different ways. It begins with a <code>context</code> which is a reference to canvas. the context provides methods to interact with the canvas and properties about the canvas. </p>
           </section>  
           <section>
-            <h1>It looks like this</h1>
+            <h1>The Context</h1>  
+          <img src="img/canvas-context.png" width="100%" style="max-width:722px">      </section>
+          
+          <section>
+            <h1>The element looks like this</h1>
             <canvas id="circle" width="800" height="300"></canvas>
           </section>
           <section>
@@ -218,6 +223,13 @@ function draw( data ) {
             <h1>Canvas: Cee.js</h1>
             <blockquote cite="http://roblarsen.github.com/CeeJS/">Cee.js is a small helper library for the Canvas 2d API. The goal is to extend and enhance the basic API while still remaining familiar</blockquote>
             <small>I'm partially to blame (also, yay <a href="http://twitter.com/bobholt">@bobholt</a> and <a href="http://twitter.com/marcneuwirth">@marcneuwirth</a>)</small>
+         </section>
+         <section>
+         <a href="http://roblarsen.github.io/CeeJS/"><img src="http://roblarsen.github.io/CeeJS/stylesheets/ceejs.svg" width="100%" style="max-width:702px">
+         </a>
+         <small><a href="http://roblarsen.github.io/CeeJS/">
+         http://roblarsen.github.io/CeeJS/
+         </a></small>
          </section>
          <section id="ceejs">
           <iframe  width="100%" height="500" ></iframe>
@@ -376,6 +388,11 @@ icicle = new $jit.Icicle({
               <li><a href="http://processingjs.org">Processing.js</a> <small>"the sister project of the popular Processing visual programming language"</small></li>
            </ul>
          </section>
+         <section>
+          <h1>Canvas Reference</h1>
+          <p><a href="http://msdn.microsoft.com/en-us/library/ie/ff975057(v=vs.85).aspx">MSDN</a></p>
+          <p><a href="https://developer.mozilla.org/en-US/docs/HTML/Canvas">MDN</a></p>
+          <p><a href="http://diveintohtml5.info/canvas.html">Mark Pilgrim's tutorial</a></p></section>
         <section>
           <h1>Thanks!</h1>
           <p><a ref="https://github.com/roblarsen">roblarsen</a> on Github | <a href="https://twitter.com/robreact">@robreact</a> on Twitter <br>
